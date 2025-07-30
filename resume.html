@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aryan Kumar Ojha - Resume</title>
+    <STYLE>
+        :root {
+            --main-white: #ECDFCC;
+            --main-red: #000000;
+            --main-blue: #007acc;
+            --main-gray: #c0baba;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--main-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--main-red);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            font-size: 1.6rem;
+            padding: 1rem;
+            color: var(--main-white);
+            text-decoration: none;
+            transition: background 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .nav-list a:hover {
+            background: var(--main-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 120px auto 30px;
+            background: var(--main-white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--main-blue);
+        }
+
+        .header-info h1 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--main-blue);
+        }
+
+        .header-info p {
+            margin: 6px 0;
+            font-size: 1rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--main-blue);
+            margin: 30px 0 20px;
+        }
+
+        h2 {
+            color: var(--main-blue);
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .project {
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: var(--main-blue);
+        }
+
+        .skills {
+            font-style: italic;
+            font-size: 0.95em;
+            color: var(--text-light);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #160808;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .container {
+                margin-top: 160px;
+                padding: 20px;
+            }
+        }
+    </STYLE>
+</head>
+</head>
+
+<body>
+    <nav id="navbar" class="nav">
+        <ul class="nav-list">
+            <li><a href="index.html">About</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contects.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <img src="PROFILE.png" alt="Aryan Kumar Ojha">
+            <div class="header-info">
+                <h1>Aryan Kumar Ojha</h1>
+                <p>Email: aryankumar735588@gmail.com</p>
+                <p>LinkedIn: <a
+                        href="https://www.linkedin.com/in/aryan-kumar-487953297">linkedin.com/in/aryan-kumar-487953297</a>
+                </p>
+                <p>GitHub: <a href="https://github.com/Aryan210804">github.com/Aryan210804</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Professional Summary</h2>
+            <p>Motivated and detail-oriented AI & ML diploma student with hands-on experience in web development, UI/UX
+                design, and Python-based machine learning. Skilled in frontend technologies and passionate about
+                building problem-solving solutions for real-world use cases in India.</p>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Diploma in AI & ML</strong> – K.E. Society’s Rajarambapu Institute of Technology
+                    (Polytechnic), Lohagaon (2022–2026)</li>
+                <li><strong>10th SSC</strong> – Delhi Public School Dhuri [Punjab], CBSE, 2022</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>Intern at Arean Animation, Viman Nagar</strong><br>Assisted in creative design projects for
+                    workshops and social media posts. Participated in collaborative team tasks and animation-related
+                    visual content creation.</li>
+                <li><strong>Research Work at Accumen AITech</strong><br>Conducted independent research on AI-based
+                    technologies and software solutions. Explored and documented tools used in automation, data
+                    processing, and web development.</li>
+                <li><strong>Magazine Designer – RIT Polytechnic, Lohagaon</strong><br>Designed visual layouts and cover
+                    pages for the official college magazine. Used tools like Canva and Figma to produce creative,
+                    high-quality content in coordination with faculty and the editorial team.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Languages: Python, Java, JavaScript, SQL, C</li>
+                <li>Web Development: HTML, CSS, Firebase</li>
+                <li>Tools: Git, Canva, Figma, VS Code, Photoshop</li>
+                <li>Soft Skills: Team Collaboration, Leadership, Creativity, Communication, Problem Solving</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <div class="project-title">LearnX</div>
+                <div class="skills">HTML | CSS | JavaScript | Firebase</div>
+                <p>An all-in-one code learning platform with tutorials on HTML, CSS, JS, Python, and SQL.</p>
+            </div>
+            <div class="project">
+                <div class="project-title">Rainbow Spiral in Python Turtle</div>
+                <div class="skills">Python | Turtle</div>
+                <p>Created a colorful spiral pattern with animation using Python Turtle graphics.</p>
+            </div>
+            <div class="project">
+                <div class="project-title">Cash Register App</div>
+                <div class="skills">Python</div>
+                <p>Built a change return app for AK Food Hub to calculate and dispense change.</p>
+            </div>
+            <div class="project">
+                <div class="project-title">Food Menu App</div>
+                <div class="skills">HTML | CSS | JavaScript</div>
+                <p>Built a simple food menu UI with category filtering functionality.</p>
+            </div>
+            <div class="project">
+                <div class="project-title">Portfolio Website</div>
+                <div class="skills">HTML | CSS</div>
+                <p>Designed a personal portfolio to showcase projects and experience.</p>
+            </div>
+        </div>
+
+        <div class="section" id="certificates">
+            <h2>Certificates</h2>
+            <ul>
+                <li><strong>Basic Python</strong> – HackerRank (July 2025) <br> <a
+                        href="https://www.hackerrank.com/certificates/02de324d810f">Show credential</a></li>
+                <li><strong>Responsive Web Design</strong> – freeCodeCamp (April 2024) <br> <a
+                        href="https://freecodecamp.org/certification/Ak2108/responsive-web-design">Show credential</a>
+                </li>
+                <li><strong>Python Programming</strong> – GeeksforGeeks (2024) <br> <a
+                        href="https://media.geeksforgeeks.org/courses/certificates/f914d898a69e56ed0b31455a84d076f4.pdf">Show
+                        credential</a></li>
+                <li><strong>Career Essentials in Generative AI</strong> – Microsoft & LinkedIn (2024) <br> <a
+                        href="https://www.linkedin.com/learning/certificates/a5a3d0b3825665a97c40ab69a165f31e6bf518aff7b6dc0e62904e17d044fa7c">Show
+                        credential</a></li>
+                <li><strong>Introduction to Artificial Intelligence</strong> – LinkedIn (2024) <br> <a
+                        href="https://www.linkedin.com/learning/certificates/851dbdfbda8d578559d6c3304224bd4aaff54ca7c59fee4a0a344d197a6ca863">Show
+                        credential</a></li>
+                <li><strong>What is Generative AI?</strong> – LinkedIn (2024) <br> <a
+                        href="https://www.linkedin.com/learning/certificates/4913df324818c19322297a7713d7e44889a008fc9cc2890db48d9fb4faef2554">Show
+                        credential</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="languages">
+            <h2>Languages</h2>
+            <ul>
+                <li>English – Very Fluent</li>
+                <li>Hindi – Very Fluent</li>
+                <li>Marathi – Intermediate</li>
+                <li>Punjabi – Very Fluent</li>
+                <li>Bhojpuri – Very Fluent</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Aryan Kumar Ojha • All rights reserved</p>
+        </div>
+    </div>
+</body>
+
+</html>

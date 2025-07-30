@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: rgb(229, 245, 14);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #1f1f1f;
+            padding: 1rem 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: left;
+            gap: 2rem;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-list li a:hover {
+            background-color: #0997f5;
+        }
+
+        main {
+            margin-top: 80px;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .item {
+            width: 200px;
+            height: 300px;
+            list-style-type: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(255, 4, 4, 0.3) inset;
+            transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+        }
+
+        .item:nth-child(1),
+        .item:nth-child(2) {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: none;
+            border-radius: 0;
+            box-shadow: none;
+            opacity: 1;
+        }
+
+        .item:nth-child(3) {
+            left: 50%;
+        }
+
+        .item:nth-child(4) {
+            left: calc(50% + 220px);
+        }
+
+        .item:nth-child(5) {
+            left: calc(50% + 440px);
+        }
+
+        .item:nth-child(6) {
+            left: calc(50% + 660px);
+            opacity: 0;
+        }
+
+        .content {
+            width: min(30vw, 400px);
+            position: absolute;
+            top: 50%;
+            left: 3rem;
+            transform: translateY(-50%);
+            font-size: 0.85rem;
+            background-color: rgba(0, 0, 0, 0.534);
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            opacity: 0;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+
+        }
+
+        .description {
+            margin: 1rem 0;
+            line-height: 1.5;
+            color: aliceblue;
+
+        }
+
+        .content button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(240, 235, 235);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .item:nth-of-type(2) .content {
+            display: block;
+            animation: fadeIn 0.75s ease-in-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                transform: translateY(calc(-50% + 50px));
+                filter: blur(5px);
+            }
+
+            to {
+                transform: translateY(-50%);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        .nav-controls {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .nav-controls .btn {
+            background: rgba(170, 167, 167, 0.5);
+            color: #000;
+            padding: 0.75rem;
+            border: 2px solid #000;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-controls .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 900px) {
+            .item {
+                width: 160px;
+                height: 270px;
+            }
+
+            .item:nth-child(4) {
+                left: calc(50% + 170px);
+            }
+
+            .item:nth-child(5) {
+                left: calc(50% + 340px);
+            }
+
+            .item:nth-child(6) {
+                left: calc(50% + 510px);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .item {
+                width: 130px;
+                height: 220px;
+            }
+
+            .item:nth-child(4) {
+                left: calc(50% + 140px);
+            }
+
+            .item:nth-child(5) {
+                left: calc(50% + 280px);
+            }
+
+            .item:nth-child(6) {
+                left: calc(50% + 420px);
+                opacity: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="nav">
+        <ul class="nav-list">
+            <li><a href="index.html">About</a></li>
+            <li><a href="project.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Projects Slider -->
+    <main id="projects">
+        <ul class='slider'>
+            <li class='item' style="background-image: url('ak.png')">
+                <div class='content'>
+                    <h2 class='title'>AK Food Hub</h2>
+                    <p class='description'>Online food ordering system built with HTML, CSS, JS & Firebase.</p>
+                    <a href="https://aryan210804.github.io/food-ordering-page/"><button>View Project</button></a>
+                </div>
+            </li>
+            <li class='item' style="background-image: url('learnX.png')">
+                <div class='content'>
+                    <h2 class='title'>LearnX</h2>
+                    <p class='description'>Interactive platform to learn HTML, CSS, JS & Python.</p>
+                    <a href="https://aryan210804.github.io/LearnX/"><button>View Project</button></a>
+                </div>
+            </li>
+            <li class='item' style="background-image: url('cash.png')">
+                <div class='content'>
+                    <h2 class='title'>Cash Register App</h2>
+                    <p class='description'>Smart billing and change calculator using JS.</p>
+                    <a href="aryan210804.github.io/cash-register-/"><button>View Project</button></a>
+                </div>
+            </li>
+            <li class="item" style="background-image: url('bmi.png');">
+                <div class="content">
+                    <h2 class="title">BMI Calculator</h2>
+                    <p class="description">Smart billing and change calculator using JavaScript.</p>
+                    <a href="https://aryan210804.github.io/BMI-Calculator/">
+                        <button type="button">View Project</button>
+                    </a>
+                </div>
+            </li>
+
+            <li class='item' style="background-image: url('survay.png')">
+                <div class='content'>
+                    <h2 class='title'>Survey Form</h2>
+                    <p class='description'>Responsive UI for gathering feedback using HTML/CSS.</p>
+                    <a href="https://aryan210804.github.io/Survey-Form-/"><button>View Project</button></a>
+                </div>
+            </li>
+        </ul>
+
+        <div class="nav-controls">
+            <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon><a href="https://github.com/Aryan210804" style="color: #f8f400;" style="font-size: x-large;">SEE ALL </a>
+            <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+        </div>
+    </main>
+    <script>
+        const slider = document.querySelector('.slider');
+
+        function activate(e) {
+            const items = document.querySelectorAll('.item');
+            if (e.target.matches('.next')) {
+                slider.append(items[0]);
+            }
+            if (e.target.matches('.prev')) {
+                slider.prepend(items[items.length - 1]);
+            }
+        }
+
+        document.addEventListener('click', activate, false);
+    </script>
+
+</body>
+
+</html>

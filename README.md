@@ -3,7 +3,7 @@
 Welcome to my personal portfolio website repository!  
 This site showcases my **skills**, **projects**, **resume**, and **contact information** — all in one place.
 
-🚀 Live Demo: [Click here to view](https://aryan210804.github.io/)  
+🚀 Live Demo: [Click here to view](https://aryan210804.github.io/Portfolio/)  
 
 ---
 

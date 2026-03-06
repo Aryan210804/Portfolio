@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aryan Kumar — Full Stack Developer & AI Enthusiast</title>
+  <meta name="description"
+    content="Aryan Kumar is a Full Stack Developer and AI & ML Enthusiast building intelligent systems and beautiful digital experiences." />
+  <meta name="keywords" content="Aryan Kumar, Full Stack Developer, AI, Machine Learning, Python, Flask, Portfolio" />
+  <meta name="author" content="Aryan Kumar" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aryan Kumar — Full Stack Developer & AI Enthusiast" />
+  <meta property="og:description" content="Building intelligent systems and impactful digital experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aryan210804.github.io/Portfolio/" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            neon: {
+              cyan: '#00f5ff',
+              purple: '#8b5cf6',
+              blue: '#3b82f6',
+              pink: '#ec4899',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+            'gradient-x': 'gradient-x 4s ease infinite',
+            'spin-slow': 'spin 8s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body class="bg-[#050810] text-white font-inter overflow-x-hidden">
+
+  <!-- ══════════════════════════════════ CURSOR ══════════════════════════════════ -->
+  <div id="cursor-glow"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ══════════════════════════════════ SCROLL PROGRESS ══════════════════════════════════ -->
+  <div id="scroll-progress"></div>
+
+  <!-- ══════════════════════════════════ PARTICLE CANVAS ══════════════════════════════════ -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ══════════════════════════════════ NAV ══════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="#hero" class="nav-logo font-poppins font-bold text-xl tracking-wider">
+          <span class="text-white">AK</span><span class="text-gradient">.</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300">About</a>
+          <a href="#skills"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300">Skills</a>
+          <a href="#projects"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300">Projects</a>
+          <a href="#achievements"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300">Achievements</a>
+          <a href="#contact"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
+          <a href="#contact" class="btn-primary text-sm font-medium px-5 py-2 rounded-full">Hire Me</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2">
+          <span class="hamburger-line w-6 h-0.5 bg-white block transition-all duration-300"></span>
+          <span class="hamburger-line w-6 h-0.5 bg-white block transition-all duration-300"></span>
+          <span class="hamburger-line w-4 h-0.5 bg-white block transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-dark mx-4 mb-4 rounded-2xl p-6">
+      <div class="flex flex-col gap-4">
+        <a href="#about" class="mobile-nav-link text-gray-300 hover:text-white py-2 border-b border-white/10">About</a>
+        <a href="#skills"
+          class="mobile-nav-link text-gray-300 hover:text-white py-2 border-b border-white/10">Skills</a>
+        <a href="#projects"
+          class="mobile-nav-link text-gray-300 hover:text-white py-2 border-b border-white/10">Projects</a>
+        <a href="#achievements"
+          class="mobile-nav-link text-gray-300 hover:text-white py-2 border-b border-white/10">Achievements</a>
+        <a href="#contact" class="mobile-nav-link text-gray-300 hover:text-white py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════ HERO ══════════════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Animated background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <!-- Grid overlay -->
+    <div class="grid-bg"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-20">
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+
+        <!-- Left: Text Content -->
+        <div class="flex-1 text-center lg:text-left">
+          <!-- Greeting badge -->
+          <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 hero-badge">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            <span class="text-xs text-gray-300 font-medium tracking-widest uppercase">Available for Work</span>
+          </div>
+
+          <!-- Name -->
+          <h1 class="hero-name font-poppins font-black leading-none mb-4">
+            <span class="block text-white text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Aryan</span>
+            <span class="block text-gradient text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Kumar</span>
+          </h1>
+
+          <!-- Typed title -->
+          <div class="flex items-center gap-3 justify-center lg:justify-start mb-4 h-10">
+            <span class="text-gray-400 text-base sm:text-lg font-medium">I build</span>
+            <span id="typed-text" class="text-neon-cyan text-base sm:text-lg font-semibold"></span>
+            <span id="typed-cursor" class="text-neon-cyan text-base sm:text-lg font-semibold">|</span>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl mb-10 mx-auto lg:mx-0">
+            {{ data.tagline }}
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <a href="#projects"
+              class="btn-primary group flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm">
+              <i class="fas fa-rocket"></i>
+              View Projects
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="https://github.com/Aryan210804" target="_blank"
+              class="btn-secondary group flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm">
+              <i class="fab fa-github"></i>
+              GitHub Profile
+            </a>
+            <a href="#contact" class="btn-ghost flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm">
+              <i class="fas fa-envelope"></i>
+              Contact Me
+            </a>
+          </div>
+
+          <!-- Tech Stack Badges -->
+          <div class="flex flex-wrap gap-2 mt-10 justify-center lg:justify-start">
+            {% set badges = ['Python', 'Flask', 'AI/ML', 'OpenCV', 'Java', 'Android', 'Git'] %}
+            {% for badge in badges %}
+            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">{{ badge }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Right: Floating Dev Card -->
+        <div class="flex-1 flex items-center justify-center relative">
+          <div class="hero-card-container relative">
+            <!-- Main Profile Card -->
+            <div class="hero-profile-card glass rounded-3xl p-8 w-80 relative z-10">
+              <!-- Avatar -->
+              <div class="avatar-ring mx-auto mb-6 relative w-28 h-28">
+                <div
+                  class="w-full h-full rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center text-4xl font-bold font-poppins">
+                  AK
+                </div>
+                <div class="avatar-status"></div>
+              </div>
+              <!-- Info -->
+              <div class="text-center mb-6">
+                <h3 class="font-poppins font-bold text-xl text-white mb-1">Aryan Kumar</h3>
+                <p class="text-xs text-neon-cyan font-medium tracking-wide">Full Stack Dev · AI Enthusiast</p>
+              </div>
+              <!-- Stats Row -->
+              <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="stat-card text-center p-3 rounded-xl">
+                  <div class="text-xl font-bold text-white">9+</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Projects</div>
+                </div>
+                <div class="stat-card text-center p-3 rounded-xl">
+                  <div class="text-xl font-bold text-white">3+</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Awards</div>
+                </div>
+                <div class="stat-card text-center p-3 rounded-xl">
+                  <div class="text-xl font-bold text-white">2y+</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Coding</div>
+                </div>
+              </div>
+              <!-- GitHub Quick -->
+              <a href="https://github.com/Aryan210804" target="_blank"
+                class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/10 text-sm font-medium text-gray-300">
+                <i class="fab fa-github"></i> @Aryan210804
+              </a>
+            </div>
+
+            <!-- Floating accent cards -->
+            <div
+              class="floating-card float-1 glass rounded-2xl px-4 py-3 absolute -top-4 -right-8 flex items-center gap-2 z-20">
+              <span class="text-2xl">🤖</span>
+              <div>
+                <p class="text-xs font-semibold text-white">AI / ML</p>
+                <p class="text-xs text-gray-400">TensorFlow · OpenCV</p>
+              </div>
+            </div>
+            <div
+              class="floating-card float-2 glass rounded-2xl px-4 py-3 absolute -bottom-4 -left-8 flex items-center gap-2 z-20">
+              <span class="text-2xl">🐍</span>
+              <div>
+                <p class="text-xs font-semibold text-white">Python Dev</p>
+                <p class="text-xs text-gray-400">Flask · Django</p>
+              </div>
+            </div>
+            <div
+              class="floating-card float-3 glass rounded-2xl px-4 py-3 absolute top-1/2 -left-12 flex items-center gap-2 z-20">
+              <span class="text-2xl">🏆</span>
+              <div>
+                <p class="text-xs font-semibold text-white">SIH Winner</p>
+                <p class="text-xs text-gray-400">College Level</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="flex flex-col items-center mt-16 gap-2 opacity-50">
+        <span class="text-xs tracking-widest uppercase text-gray-500">Scroll to explore</span>
+        <div class="scroll-indicator"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+  <section id="about" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-about"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="section-header text-center mb-16 reveal">
+        <span class="section-label">Get to know me</span>
+        <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+        <p class="section-subtitle">The story behind the developer</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left: Story -->
+        <div class="reveal">
+          <p class="text-gray-300 text-base leading-relaxed mb-8">
+            Hey, I'm <span class="text-white font-semibold">Aryan Kumar</span>. I'm currently in my diploma in <span
+              class="text-neon-cyan font-medium">AI and Machine Learning</span>, and I spend a lot of my free time
+            building things — mostly web apps, Android apps, and Python projects.
+          </p>
+          <p class="text-gray-300 text-base leading-relaxed mb-8">
+            My most serious project so far is an <span class="text-purple-400 font-medium">AI Road Crossing
+              Assistant</span> for visually impaired people. It actually won 3rd place at an international symposium,
+            which was a big deal for me. Most of what I learn comes from building stuff, breaking it, and figuring out
+            why it broke.
+          </p>
+          <p class="text-gray-300 text-base leading-relaxed mb-8">
+            I'm still learning a lot. I try to work across different areas — AI/ML, full-stack web, and Android — so I
+            can build complete end-to-end things rather than just one piece. I enjoy open-source and like seeing how
+            other developers approach problems.
+          </p>
+
+          <!-- Trait Chips -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {% set traits = ['🤖 AI Enthusiast', '🌐 Full Stack Dev', '📱 Android Builder', '🔬 ML Explorer', '🤝 Open
+            Source', '🚀 Problem Solver'] %}
+            {% for trait in traits %}
+            <span class="trait-chip glass px-4 py-2 rounded-full text-sm font-medium text-gray-300">{{ trait }}</span>
+            {% endfor %}
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-4 flex-wrap">
+            <a href="{{ data.github }}" target="_blank"
+              class="btn-primary flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+            <a href="{{ data.linkedin }}" target="_blank"
+              class="btn-secondary flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Skill Radar & Stats -->
+        <div class="reveal space-y-6">
+          <!-- Quick Stats -->
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="glass-card rounded-2xl p-6 text-center group hover:border-cyan-500/50 transition-all duration-300">
+              <div class="text-4xl font-bold font-poppins text-gradient mb-2">9+</div>
+              <div class="text-sm text-gray-400 font-medium">Projects Built</div>
+            </div>
+            <div
+              class="glass-card rounded-2xl p-6 text-center group hover:border-purple-500/50 transition-all duration-300">
+              <div class="text-4xl font-bold font-poppins text-gradient-purple mb-2">3+</div>
+              <div class="text-sm text-gray-400 font-medium">Awards Won</div>
+            </div>
+            <div
+              class="glass-card rounded-2xl p-6 text-center group hover:border-blue-500/50 transition-all duration-300">
+              <div class="text-4xl font-bold font-poppins text-gradient-blue mb-2">2y+</div>
+              <div class="text-sm text-gray-400 font-medium">Coding Journey</div>
+            </div>
+            <div
+              class="glass-card rounded-2xl p-6 text-center group hover:border-pink-500/50 transition-all duration-300">
+              <div class="text-4xl font-bold font-poppins text-gradient-pink mb-2">∞</div>
+              <div class="text-sm text-gray-400 font-medium">Curiosity Level</div>
+            </div>
+          </div>
+
+          <!-- Currently Building -->
+          <div class="glass-card rounded-2xl p-6">
+            <h3 class="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              Currently Building
+            </h3>
+            <div class="space-y-3">
+              {% for item in data.currently_building %}
+              <div class="flex items-center gap-3 text-sm text-gray-300">
+                <span>{{ item.icon }}</span>
+                <span>{{ item.item }}</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ SKILLS ══════════════════════════════════ -->
+  <section id="skills" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-skills"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="section-header text-center mb-16 reveal">
+        <span class="section-label">What I work with</span>
+        <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
+        <p class="section-subtitle">Technologies I've mastered and continue learning</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 reveal">
+        {% for category, skills in data.skills.items() %}
+        <div class="skill-category-card glass-card rounded-2xl p-6 lg:p-8">
+          <h3
+            class="font-poppins font-semibold text-white text-sm uppercase tracking-widest mb-6 flex items-center gap-3">
+            {% if category == 'Programming' %}<span class="text-neon-cyan">⟨/⟩</span>
+            {% elif category == 'Web Development' %}<span class="text-purple-400">🌐</span>
+            {% elif category == 'AI / ML' %}<span class="text-blue-400">🤖</span>
+            {% else %}<span class="text-green-400">🛠</span>{% endif %}
+            {{ category }}
+          </h3>
+          <div class="space-y-5">
+            {% for skill in skills %}
+            <div class="skill-item">
+              <div class="flex justify-between items-center mb-2">
+                <span class="flex items-center gap-2 text-sm font-medium text-gray-300">
+                  <span class="text-base">{{ skill.icon }}</span>
+                  {{ skill.name }}
+                </span>
+                <span class="text-xs font-semibold text-gray-400 skill-percent" data-level="{{ skill.level }}">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="{{ skill.level }}" style="width: 0%"></div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Tech Orbit -->
+      <div class="mt-16 reveal">
+        <p class="text-center text-gray-500 text-sm mb-6 uppercase tracking-widest font-medium">Also familiar with</p>
+        <div class="tech-orbit-container">
+          {% set tech_items = ['Firebase', 'NumPy', 'Matplotlib', 'Bootstrap', 'Tailwind', 'SQLite', 'Linux', 'Figma',
+          'Canva', 'Android SDK'] %}
+          {% for tech in tech_items %}
+          <span class="tech-orbit-item glass px-4 py-2 rounded-full text-sm font-medium text-gray-300">{{ tech }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ PROJECTS ══════════════════════════════════ -->
+  <section id="projects" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-projects"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="section-header text-center mb-12 reveal">
+        <span class="section-label">What I've built</span>
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <p class="section-subtitle">9 real-world applications across AI, Web, Android & Python</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
+        <button class="filter-tab active" data-filter="all">All Projects <span class="filter-count">9</span></button>
+        <button class="filter-tab" data-filter="ai">🤖 AI & ML <span class="filter-count">4</span></button>
+        <button class="filter-tab" data-filter="web">🌐 Web <span class="filter-count">2</span></button>
+        <button class="filter-tab" data-filter="android">📱 Android <span class="filter-count">2</span></button>
+        <button class="filter-tab" data-filter="python">🐍 Python <span class="filter-count">1</span></button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {% for project in data.projects %}
+        <div class="project-card" data-color="{{ project.color }}" data-category="{{ project.category }}">
+          <!-- Card Header -->
+          <div class="project-card-header">
+            <div class="project-icon-ring {{ project.color }}">
+              <span class="text-3xl">{{ project.icon }}</span>
+            </div>
+            {% if project.featured %}
+            <span class="project-badge-featured">⭐ Featured</span>
+            {% endif %}
+          </div>
+
+          <!-- Content -->
+          <div class="project-card-body">
+            <h3 class="text-white font-poppins font-bold text-base mb-2">{{ project.title }}</h3>
+            <p class="text-gray-400 text-xs leading-relaxed mb-4">{{ project.description }}</p>
+
+            <!-- Tech Stack -->
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              {% for tech in project.tech %}
+              <span class="tech-pill tech-pill-{{ project.color }} text-xs px-2 py-0.5 rounded-full font-medium">{{ tech
+                }}</span>
+              {% endfor %}
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-2">
+              <a href="{{ project.github }}" target="_blank"
+                class="project-btn-github flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <span
+                class="project-btn-demo flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold opacity-40 cursor-not-allowed select-none">
+                <i class="fas fa-external-link-alt"></i> Demo
+              </span>
+            </div>
+          </div>
+
+          <!-- Glow Effect -->
+          <div class="project-glow project-glow-{{ project.color }}"></div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- View All on GitHub -->
+      <div class="text-center mt-12 reveal">
+        <a href="https://github.com/Aryan210804" target="_blank"
+          class="btn-secondary inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold">
+          <i class="fab fa-github text-lg"></i>
+          View All Projects on GitHub
+          <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ ACHIEVEMENTS ══════════════════════════════════ -->
+  <section id="achievements" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-achievements"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="section-header text-center mb-16 reveal">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-title">Achievements & <span class="text-gradient">Milestones</span></h2>
+        <p class="section-subtitle">Competitions, hackathons, and breakthrough moments</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline-container max-w-3xl mx-auto">
+        {% for ach in data.achievements %}
+        <div class="timeline-item reveal {% if ach.highlight %}timeline-highlight{% endif %}">
+          <div class="timeline-dot {% if ach.highlight %}timeline-dot-gold{% endif %}">
+            <span class="text-xl">{{ ach.icon }}</span>
+          </div>
+          <div class="timeline-card glass-card rounded-2xl p-6">
+            <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+              <span class="timeline-year text-xs font-bold px-3 py-1 rounded-full">{{ ach.year }}</span>
+              {% if ach.highlight %}
+              <span class="text-xs text-yellow-400 font-semibold flex items-center gap-1"><i
+                  class="fas fa-star text-xs"></i> Highlight</span>
+              {% endif %}
+            </div>
+            <h3 class="font-poppins font-bold text-white text-lg mb-2">{{ ach.title }}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">{{ ach.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ GITHUB ACTIVITY ══════════════════════════════════ -->
+  <section id="github" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-github"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="section-header text-center mb-16 reveal">
+        <span class="section-label">Open Source Presence</span>
+        <h2 class="section-title">GitHub <span class="text-gradient">Activity</span></h2>
+        <p class="section-subtitle">My contribution footprint on GitHub</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 reveal">
+        <!-- GitHub Stats Card -->
+        <div class="lg:col-span-2 glass-card rounded-2xl p-6 overflow-hidden">
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
+            <i class="fab fa-github text-neon-cyan"></i> GitHub Stats
+          </h3>
+          <div class="w-full">
+            <img
+              src="https://github-readme-stats.vercel.app/api?username=Aryan210804&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=00f5ff&icon_color=8b5cf6&text_color=9ca3af&count_private=true"
+              alt="Aryan's GitHub Stats" class="w-full rounded-xl" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'text-center py-8 text-gray-500 text-sm\'>GitHub stats not available in offline mode</div>'" />
+          </div>
+        </div>
+
+        <!-- Top Languages -->
+        <div class="glass-card rounded-2xl p-6 overflow-hidden">
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
+            <i class="fas fa-code text-purple-400"></i> Top Languages
+          </h3>
+          <img
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aryan210804&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=8b5cf6&text_color=9ca3af"
+            alt="Top Languages" class="w-full rounded-xl" loading="lazy"
+            onerror="this.parentElement.innerHTML='<div class=\'text-center py-8 text-gray-500 text-sm\'>Language stats not available</div>'" />
+        </div>
+
+        <!-- Streak Stats -->
+        <div class="lg:col-span-3 glass-card rounded-2xl p-6 overflow-hidden">
+          <h3 class="text-white font-semibold text-sm mb-5 flex items-center gap-2">
+            <i class="fas fa-fire text-orange-400"></i> Contribution Streak
+          </h3>
+          <img
+            src="https://github-readme-streak-stats.herokuapp.com/?user=Aryan210804&theme=github-dark&hide_border=true&background=0d1117&ring=00f5ff&fire=8b5cf6&currStreakLabel=00f5ff"
+            alt="GitHub Streak" class="w-full rounded-xl max-h-40 object-contain" loading="lazy"
+            onerror="this.parentElement.innerHTML='<div class=\'text-center py-8 text-gray-500 text-sm\'>Streak stats not available</div>'" />
+        </div>
+      </div>
+
+      <!-- GitHub Link CTA -->
+      <div class="mt-10 text-center reveal">
+        <a href="https://github.com/Aryan210804" target="_blank"
+          class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold">
+          <i class="fab fa-github text-lg"></i>
+          Visit My GitHub Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ CONTACT ══════════════════════════════════ -->
+  <section id="contact" class="py-24 lg:py-32 relative">
+    <div class="section-orb orb-contact"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="section-header text-center mb-16 reveal">
+        <span class="section-label">Let's talk</span>
+        <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+        <p class="section-subtitle max-w-xl mx-auto">Whether you have an exciting project, want to collaborate, or just
+          want to say hello — my inbox is always open.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto reveal">
+        <!-- Email -->
+        <a href="mailto:{{ data.email }}" target="_blank"
+          class="contact-card group glass-card rounded-2xl p-8 text-center block hover:scale-105 transition-all duration-300">
+          <div class="contact-icon-ring email mx-auto mb-5">
+            <i class="fas fa-envelope text-2xl"></i>
+          </div>
+          <h3 class="font-poppins font-bold text-white text-base mb-2">Email</h3>
+          <p class="text-gray-400 text-xs break-all">{{ data.email }}</p>
+          <span
+            class="contact-cta text-xs font-semibold mt-4 inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-neon-cyan">
+            Send Email →
+          </span>
+        </a>
+
+        <!-- GitHub -->
+        <a href="{{ data.github }}" target="_blank"
+          class="contact-card group glass-card rounded-2xl p-8 text-center block hover:scale-105 transition-all duration-300">
+          <div class="contact-icon-ring github mx-auto mb-5">
+            <i class="fab fa-github text-2xl"></i>
+          </div>
+          <h3 class="font-poppins font-bold text-white text-base mb-2">GitHub</h3>
+          <p class="text-gray-400 text-xs">@Aryan210804</p>
+          <span
+            class="contact-cta text-xs font-semibold mt-4 inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-purple-400">
+            View Profile →
+          </span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="{{ data.linkedin }}" target="_blank"
+          class="contact-card group glass-card rounded-2xl p-8 text-center block hover:scale-105 transition-all duration-300">
+          <div class="contact-icon-ring linkedin mx-auto mb-5">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </div>
+          <h3 class="font-poppins font-bold text-white text-base mb-2">LinkedIn</h3>
+          <p class="text-gray-400 text-xs">Aryan Kumar</p>
+          <span
+            class="contact-cta text-xs font-semibold mt-4 inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-blue-400">
+            Connect →
+          </span>
+        </a>
+      </div>
+
+      <!-- Big CTA Card -->
+      <div class="mt-10 max-w-3xl mx-auto reveal">
+        <div class="cta-card glass-card rounded-3xl p-10 text-center relative overflow-hidden">
+          <div class="cta-glow"></div>
+          <h3 class="font-poppins font-bold text-2xl lg:text-3xl text-white mb-4 relative z-10">
+            Ready to build something <span class="text-gradient">amazing</span> together?
+          </h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-8 relative z-10 max-w-md mx-auto">
+            I'm actively looking for exciting opportunities. Whether it's a full-time role, freelance project, or
+            open-source collaboration — let's make it happen.
+          </p>
+          <a href="mailto:{{ data.email }}" target="_blank"
+            class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold relative z-10">
+            <i class="fas fa-paper-plane"></i>
+            Let's Collaborate
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ FOOTER ══════════════════════════════════ -->
+  <footer class="py-10 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Left -->
+        <div class="text-center md:text-left">
+          <span class="font-poppins font-bold text-xl text-gradient">AK</span>
+          <p class="text-gray-500 text-xs mt-1">Built with Python & passion by Aryan Kumar</p>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex items-center gap-6">
+          <a href="#hero" class="text-gray-500 hover:text-white text-xs transition-colors">Home</a>
+          <a href="#about" class="text-gray-500 hover:text-white text-xs transition-colors">About</a>
+          <a href="#projects" class="text-gray-500 hover:text-white text-xs transition-colors">Projects</a>
+          <a href="#contact" class="text-gray-500 hover:text-white text-xs transition-colors">Contact</a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/Aryan210804" target="_blank" class="footer-social-btn" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/aryan-kumar-487953297/" target="_blank" class="footer-social-btn"
+            title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:aryankumar735588@gmail.com" class="footer-social-btn" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/5 text-center">
+        <p class="text-gray-600 text-xs">© 2026 Aryan Kumar Ojha</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════ FLOATING GITHUB BTN ══════════════════════════════════ -->
+  <a href="https://github.com/Aryan210804" target="_blank" id="floating-github"
+    class="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center z-50 shadow-lg"
+    title="GitHub">
+    <i class="fab fa-github text-lg"></i>
+  </a>
+
+  <!-- ══════════════════════════════════ PAGE LOADER ══════════════════════════════════ -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <div class="loader-logo">AK</div>
+      <div class="loader-bar"></div>
+      <p class="loader-text">Loading portfolio...</p>
+    </div>
+  </div>
+
+  <!-- Main JS -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
